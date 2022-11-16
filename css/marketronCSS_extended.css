@@ -1,0 +1,130 @@
+
+body{
+    background-color: white;
+}
+
+.row{
+    margin-right: 0px !important;
+}
+
+.head_title{
+    font-family: 'Montserrat Bold', sans-serif;
+    font-size:32pt;
+    color: #1f2e3e;
+    line-height: 36pt;
+    font-weight: bold !important;
+    margin-top: 25px;
+}
+
+#head_content_image{
+    padding-top:15px;
+}
+
+.head_content{
+    font-family: 'Montserrat SemiBold',sans-serif;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    color: #1f2e3e;
+    font-size: 17pt;
+    line-height: 24pt;
+}
+
+.row-parts{
+    padding-bottom:25px;
+    padding-bottom: 25px;
+}
+
+.row-parts-heading{
+    padding: 10px;
+    text-align: left;
+    color: #0f488d;
+    font-size: 24pt;
+    font-family: 'Montserrat ExtraBold', sans-serif;
+    background-color: #f0f1f2 ;
+}
+
+.row-parts-paragraph{
+    font-family: "Montserrat SemiBold";
+    color: #1f2e3e;
+    font-size: 14pt;
+    line-height: 18pt;
+}
+
+#total_roi{
+    background-color: #0f488d;
+    color: white;
+}
+
+.label_style{
+    font-family: 'Montserrat SemiBold',sans-serif;
+    font-size: 14pt;
+    color: #1f2e3e;
+    height: 56px;
+}
+.bg-input-back{
+    --bs-bg-opacity: 1;
+    background-color: #45b74f !important
+}
+
+.bg-input-back-gray{
+    --bs-bg-opacity: 1;
+    background-color: #f0f1f2 !important;
+}
+
+#Technology_Cost_Savings{
+    padding-bottom: 50px;
+}
+#download_button_row{
+    padding-top:25px;
+    padding-bottom: 25px;
+}
+.bottom-left-texts{
+    font-family: "Montserrat SemiBold";
+    font-size: 16pt;
+    color: #1f2e3e;
+}
+
+#total_annual_roi{
+    font-family: 'Montserrat';
+    font-size: 24pt;
+    font-weight: bold;
+}
+
+#estimated_rev_annual_costs, #net_roi{
+    border-bottom:2px solid black;
+    padding-top:15px;
+    padding-bottom: 15px;
+}
+
+#roi_return{
+    padding-top:15px;
+    padding-bottom: 15px;
+}
+
+#save_pdf_button_id{
+    width: 220px;
+    font-family: 'Montserrat SemiBold';
+    font-size: 12pt;
+    border-radius: 30px;
+    padding:10px;
+    padding-top:10px;
+}
+
+#extended_zone, #calc_container_extended{
+    background-color: white;
+}
+
+.pdf_button{
+    display:inline;
+    margin-right: 6px;
+    border: 0.5px;
+    background-color: rgb(19, 90, 156);
+    border-radius: 6px;
+    color: white;
+    height: 44px;
+    width: 180px;
+}
+.lower{
+    font-size: 24px;
+    padding-top:5px;
+}

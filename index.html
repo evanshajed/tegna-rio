@@ -1,1 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Calculator App</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <script src="js/chart.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+
+    <script src="js/jspdf.min.js"></script>
+    <script src="js/jspdf.debug.js"></script>
+
+    <script src="js/html2canvas.js"></script>
+    <script src="js/currency.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/marketronCSS_extended.css">
+    <script src="js/dom-to-image.min.js"></script>
+    <script src="js/variable_value_main.js"></script>
+
+</head>
+<body>
+
+    <div class="container" id="calc_container_extended">
+
+        <div id="extended_zone" style="margin: 0 0; padding:0 0;">
+
+            <div class="row" id="head_content_image">
+                <div class="col-md-8">
+
+                    <img style="margin-top: 20px;" class="logo" width="50%" height="75%"
+                         src="data:image/png;base64,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"/>
+
+                </div>
+                <div class="col-md-4">
+                    <h1 class="head_title">
+                        ROI Calculator
+                    </h1>
+                </div>
+            </div>
+            <div class="row" id="head_content_text">
+                <div class="col-md-12">
+                        <p class="head_content">
+                            Want to know how Marketron REV will deliver ROI for your organization? We’ve created this handy ROI calculator
+                            to measure multiple areas of value. Plug in your numbers below to see how REV can boost your revenue and operational efficiency.
+                        </p>
+                    </div>
+            </div>
+
+            <div class="row row-parts" id="Rate_Improvement">
+                <h1 class="row-parts-heading">
+                    Rate Improvement
+                </h1>
+                <p class="row-parts-paragraph">
+                    When using yield management, you can generate higher revenue. Enter your projected or budgeted increase with your current annual revenue.
+                    On average, REV adds 5% to your top-line revenue.
+                </p>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="label_style">
+                            Estimated Increase In<br>Top-Line Revenue
+                        </label>
+                        <br>
+                        <input type="text" class="form-control bg-input-back_extend"
+                               id="estimated_increase_top_line_revenue"
+                               name="estimated_increase_top_line_revenue"
+                               value=""
+                               style="font-weight: 500; width: 280px;display: inline-block;">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="label_style">
+                            Annual Revenue
+                        </label>
+
+                        <input type="text" class="form-control bg-input-back_extend"
+                               id="annual_revenue"
+                               name="annual_revenue"
+                               value=""
+                               style="font-weight: 500; width: 280px;display: inline-block;margin-top: 0px;">
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="label_style">
+                            Return:
+                        </label>
+
+                        <input type="text" class="form-control bg-input-back text-white for_total_annual_roi"
+                               disabled
+                               id="rate_improvement_return"
+                               name="rate_improvement_return"
+                               value=""
+                               style="font-weight: 500; width: 280px;display: inline-block;">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-parts" id="Sales_Efficiency">
+                <h1 class="row-parts-heading">
+                    Sales Efficiency
+                </h1>
+                <p class="row-parts-paragraph">
+                    Sellers save so much time using REV, and they can sell more advertising each month. On average, sellers have 20%-40% more time. Enter the
+                    number of salespeople in your organization and the average deal amount to see how much more per month and year they could deliver.
+                </p>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="label_style">
+                            Number of Salespeople:
+                        </label>
+
+                        <input type="text" class="form-control bg-input-back_extend"
+                               id="number_salespeople"
+                               name="number_salespeople"
+                               value=""
+                               style="font-weight: 500; width: 280px;display: inline-block;">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="label_style">
+                            Average Deal Amount:
+                        </label>
+
+                        <input type="text" class="form-control bg-input-back_extend"
+                               id="average_deal_amount"
+                               name="average_deal_amount"
+                               value=""
+                               style="font-weight: 500; width: 280px;display: inline-block;">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="label_style">
+                            Increased Revenue<br>per Month:
+                        </label>
+
+                        <input type="text" class="form-control bg-input-back-gray"
+                               disabled
+                               id="increased_revenue_sales_per_month"
+                               name="increased_revenue_sales_per_month"
+                               value=""
+                               style="font-weight: 500; width: 280px;display: inline-block;">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="label_style">
+                            Increased Revenue per Year:
+                        </label>
+
+                        <input type="text" class="form-control bg-input-back text-white for_total_annual_roi"
+                               disabled
+                               id="increased_revenue_per_sales_year"
+                               name="increased_revenue_per_sales_year"
+                               value=""
+                               style="font-weight: 500; width: 280px;display: inline-block;">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-parts" id="Pay_for_Performance">
+                <h1 class="row-parts-heading">
+                    Pay for Performance
+                </h1>
+                <p class="row-parts-paragraph">
+                    Growing your pay-for-performance revenue is critical, and REV helps you do it. Enter the annual percentage increase you expect (if unknown, the
+                    industry average is 0.2%-0.5%.) and your total revenue to see the return.
+                </p>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="label_style">
+                            Increase in Pay-for-Performance Revenue:
+                        </label>
+
+                        <input type="text" class="form-control bg-input-back_extend"
+                               id="increase_pay_performance_revenue"
+                               name="increase_pay_performance_revenue"
+                               value=""
+                               style="font-weight: 500; width: 280px;display: inline-block;">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="label_style">
+                            Total Current Revenue:
+                        </label>
+
+                        <input type="text" class="form-control bg-input-back-gray"
+                               disabled
+                               id="total_current_revenue"
+                               name="total_current_revenue"
+                               value="$1,500,000,000"
+                               style="font-weight: 500; width: 280px;display: inline-block;">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="label_style">
+                            Increased Revenue per Month:
+                        </label>
+
+                        <input type="text" class="form-control bg-input-back-gray"
+                               disabled
+                               id="increased_revenue_per_month"
+                               name="increased_revenue_per_month"
+                               value=""
+                               style="font-weight: 500; width: 280px;display: inline-block;">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="label_style">
+                            Increased Revenue per Year:
+                        </label>
+
+                        <input type="text" class="form-control bg-input-back text-white "
+                               disabled
+                               id="increased_revenue_per_year"
+                               name="increased_revenue_per_year"
+                               value=""
+                               style="font-weight: 500; width: 280px;display: inline-block;">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-parts" id="Automation_for_Cross_Channel_Linear_and_Digital_Proposals ">
+                <h1 class="row-parts-heading">
+                    Automation for Cross-Channel (Linear and Digital) Proposals
+                </h1>
+                <p class="row-parts-paragraph">
+                    REV makes proposal creation easy and fast, meaning your sellers can close more deals. Enter the approximate number of new deals you could
+                    close and their average value. If unsure, input 12 for one per month.
+                </p>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="label_style" style="width: 250px;">
+                            Number of New Deals Closed per Year:
+                        </label>
+
+                        <input type="text" class="form-control bg-input-back_extend"
+                               id="number_new_deals_closed_year"
+                               name="number_new_deals_closed_year"
+                               value=""
+                               style="font-weight: 500; width: 280px;display: inline-block;">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="label_style">
+                            Annual of Each Deal:
+                        </label>
+
+                        <input type="text" class="form-control bg-input-back_extend"
+                               id="annual_each_deal"
+                               name="annual_each_deal"
+                               value=""
+                               style="font-weight: 500; width: 280px;display: inline-block; margin-top: 4px;">
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="label_style">
+                            Return:
+                        </label>
+
+                        <input type="text" class="form-control bg-input-back text-white for_total_annual_roi"
+                               id="automation_return"
+                               name="automation_return"
+                               disabled
+                               value=""
+                               style="font-weight: 500; width: 280px;display: inline-block;">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-parts" id="Operational_Efficiency">
+                <h1 class="row-parts-heading">
+                    Operational Efficiency
+                </h1>
+                <p class="row-parts-paragraph">
+                    REV removes many manual tasks with automation. As a result, efficiency can improve by at least 2%. Input the number of stations you have
+                    along with the value of the credits per month.
+                </p>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="label_style" style="height: 56px;">
+                            Number of Stations:
+                        </label>
+
+                        <input type="text" class="form-control bg-input-back_extend"
+                               id="number_stations"
+                               name="number_stations"
+                               value=""
+                               style="font-weight: 500; width: 280px;display: inline-block;">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="label_style" style="width: 250px;">
+                            Amount Saved from Credits:
+                        </label>
+
+                        <input type="text" class="form-control bg-input-back_extend"
+                               id="amount_saved_credits"
+                               name="amount_saved_credits"
+                               value=""
+                               style="font-weight: 500; width: 280px;display: inline-block;">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="label_style" style="height: 56px;">
+                            Savings per Month:
+                        </label>
+
+                        <input type="text" class="form-control bg-input-back-gray"
+                               disabled
+                               id="savings_per_month"
+                               name="savings_per_month"
+                               value=""
+                               style="font-weight: 500; width: 280px;display: inline-block;">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="label_style">
+                            Return:
+                        </label>
+
+                        <input type="text" class="form-control bg-input-back text-white for_total_annual_roi"
+                               disabled
+                               id="optional_return"
+                               name="optional_return"
+                               value=""
+                               style="font-weight: 500; width: 280px;display: inline-block;">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-parts" id="Technology_Cost_Savings">
+                <h1 class="row-parts-heading">
+                    Technology Cost Savings
+                </h1>
+                <p class="row-parts-paragraph">
+                    By using REV, you can eliminate other technology costs, such as a media sales platform or standalone yield management tool. Enter the annual
+                    fees for these platforms to reveal your savings.
+                </p>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="label_style">
+                            Platform 1:
+                        </label>
+
+                        <input type="text" class="form-control bg-input-back_extend platform"
+                               id="platform_1"
+                               name="platform_1"
+                               value="0"
+                               style="font-weight: 500; width: 280px;display: inline-block;">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="label_style">
+                            Platform 2:
+                        </label>
+
+                        <input type="text" class="form-control bg-input-back_extend platform"
+                               id="platform_2"
+                               name="platform_2"
+                               value="0"
+                               style="font-weight: 500; width: 280px;display: inline-block;">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="label_style">
+                            Platform 3:
+                        </label>
+
+                        <input type="text" class="form-control bg-input-back_extend platform"
+                               id="platform_3"
+                               name="platform_3"
+                               value="0"
+                               style="font-weight: 500; width: 280px;display: inline-block;">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="label_style">
+                            Combined Savings:
+                        </label>
+
+                        <input type="text" class="form-control bg-input-back text-white for_total_annual_roi"
+                               disabled
+                               id="combined_savings"
+                               name="combined_savings"
+                               value=""
+                               style="font-weight: 500; width: 280px;display: inline-block;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="total_roi">
+                <div class="col-md-9">
+                    <span id="total_annual_roi">
+                        Total Annual ROI:
+                    </span>
+                </div>
+                <div class="col-md-3">
+                    <span class="lower" id="total_annual_roi_result"
+                    style="font-weight: bolder;">
+
+                    </span>
+
+                </div>
+            </div>
+            <div class="row" id="estimated_rev_annual_costs">
+                <div class="col-md-9">
+                    <span class="bottom-left-texts">
+                        Estimated REV Annual Costs:
+                    </span>
+                </div>
+                <div class="col-md-3">
+                    <span class="lower" id="estimated_rev_annual_costs_result"
+                          style="color:red;font-weight: bolder;">
+                        ($4,000,000.00)
+                    </span>
+                </div>
+            </div>
+            <div class="row" id="net_roi">
+                <div class="col-md-9">
+                    <span class="bottom-left-texts">
+                        Net ROI:
+                    </span>
+                </div>
+                <div class="col-md-3">
+                    <span class="lower" id="net_roi_result" style="font-weight: bolder;">
+
+                    </span>
+                </div>
+            </div>
+            <div class="row" id="roi_return">
+                <div class="col-md-9">
+                    <span class="bottom-left-texts">
+                        ROI Return:
+                    </span>
+                </div>
+                <div class="col-md-3">
+                    <span class="lower" id="roi_return_result" style="font-weight: bolder;">
+
+                    </span>
+                </div>
+            </div>
+
+            <div class="row row-parts" id="download_button_row">
+                <div class="col-md-6">
+                    <button class="svRsltBtn pdf_button" id="save_pdf_button_id" onclick="savePDFrev()">
+                        <!-- id="exportbtn" onclick="savePDF()" -->
+                        Save Results (PDF)
+                    </button>
+                </div>
+                <div class="col-md-6">
+                    <img src="data:image/png;base64,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"
+                    style="float:right;" />
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+</body>
+</html>
