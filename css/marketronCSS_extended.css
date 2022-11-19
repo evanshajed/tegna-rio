@@ -32,7 +32,7 @@ input{
     line-height: 36pt;
     font-weight: bold !important;
     margin-top: 25px;
-    text-align: right;
+    text-align: left;
 }
 
 #head_content_image{
@@ -128,7 +128,7 @@ input{
     font-size: 12pt;
     border-radius: 30px;
     padding:10px;
-    padding-top:10px;
+    
 }
 
 #extended_zone, #calc_container_extended{
