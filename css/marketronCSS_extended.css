@@ -17,7 +17,7 @@ input{
     .head_title{
         text-align: left !important;
         font-family: 'Montserrat Bold', sans-serif;
-        font-size:22pt !important;
+        font-size:20pt !important;
         color: #1f2e3e;
         line-height: 36pt;
         font-weight: bold !important;
@@ -128,7 +128,7 @@ input{
     font-size: 12pt;
     border-radius: 30px;
     padding:10px;
-    
+
 }
 
 #extended_zone, #calc_container_extended{
