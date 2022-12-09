@@ -290,9 +290,10 @@ $(document).ready(function () {
 
 
 
-            $('#total_current_revenue').val(parseInt(annual_revenue).toFixed(2).replace(/\.00$/, ''));
-            $('#total_current_revenue').text(dollarUS.format(annual_revenue).replace(/\.00$/, ''));
-            //total_current_revenue
+            // pull and push values into P4P Revenue from Annual Revenue
+            //$('#total_current_revenue').val(parseInt(annual_revenue).toFixed(2).replace(/\.00$/, ''));
+            //$('#total_current_revenue').text(dollarUS.format(annual_revenue).replace(/\.00$/, ''));
+
 
 
             $(this).trigger('change');
@@ -324,7 +325,8 @@ $(document).ready(function () {
 
             $('#rate_improvement_return').val(dollarUS.format(rate_improvement_return).replace(/\.00$/, ''));
 
-            $('#total_current_revenue').val(dollarUS.format(annual_revenue).replace(/\.00$/, ''));
+            // pull and push values into P4P Revenue from Annual Revenue
+            // $('#total_current_revenue').val(dollarUS.format(annual_revenue).replace(/\.00$/, ''));
 
 
             $(this).trigger('change');
@@ -820,13 +822,28 @@ $('#increased_revenue_per_month').trigger('change');
                 $(this).val('');
                 $(this).text('');
             }
-            $(this).text(stripped_2+'%');
-            $(this).val(stripped_2+'%');
+            // adding % sign after the value
+            // $(this).text(stripped_2+'%');
+            // $(this).val(stripped_2+'%');
 
             $('#increased_revenue_per_month').trigger('change');
 
         },
         blur: function () {
+
+            var str_2 = $(this).val();
+            var regex_2 = /[$,%\s]/g;
+            var stripped_2 = str_2.replace(regex_2, '');
+            //console.log("stripped value :" +stripped);
+
+            if(stripped_2 == 0){
+                $(this).val('');
+                $(this).text('');
+            }
+            // adding % sign after the value
+            $(this).text(stripped_2+'%');
+            $(this).val(stripped_2+'%');
+
             $('#increased_revenue_per_month').trigger('change');
         }
     });
